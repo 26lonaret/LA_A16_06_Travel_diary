@@ -1,79 +1,420 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'">
-    <title>Site not found &middot; GitHub Pages</title>
-    <style type="text/css" media="screen">
-      body {
-        background-color: #f1f1f1;
-        margin: 0;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
+In VS Code, create two files: `index.html` and `style.css`. Paste each code block into its matching file. Keep an `images` folder beside them with `kathmandu.png`, `boudhanath.jpg`, and `everest.jpg`.
 
-      .container { margin: 50px auto 40px auto; width: 600px; text-align: center; }
+**`index.html`**
 
-      a { color: #4183c4; text-decoration: none; }
-      a:hover { text-decoration: underline; }
-
-      h1 { width: 800px; position:relative; left: -100px; letter-spacing: -1px; line-height: 60px; font-size: 60px; font-weight: 100; margin: 0px 0 50px 0; text-shadow: 0 1px 0 #fff; }
-      p { color: rgba(0, 0, 0, 0.5); margin: 20px 0; line-height: 1.6; }
-
-      ul { list-style: none; margin: 25px 0; padding: 0; }
-      li { display: table-cell; font-weight: bold; width: 1%; }
-
-      .logo { display: inline-block; margin-top: 35px; }
-      .logo-img-2x { display: none; }
-      @media
-      only screen and (-webkit-min-device-pixel-ratio: 2),
-      only screen and (   min--moz-device-pixel-ratio: 2),
-      only screen and (     -o-min-device-pixel-ratio: 2/1),
-      only screen and (        min-device-pixel-ratio: 2),
-      only screen and (                min-resolution: 192dpi),
-      only screen and (                min-resolution: 2dppx) {
-        .logo-img-1x { display: none; }
-        .logo-img-2x { display: inline-block; }
-      }
-
-      #suggestions {
-        margin-top: 35px;
-        color: #ccc;
-      }
-      #suggestions a {
-        color: #666666;
-        font-weight: 200;
-        font-size: 14px;
-        margin: 0 10px;
-      }
-
-    </style>
-  </head>
-  <body>
-
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nepal, Slowly — A travel note</title>
+  <meta name="description" content="A small travel guide to Kathmandu, Boudhanath and the Everest region in Nepal.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg site-nav">
     <div class="container">
-
-      <h1>404</h1>
-      <p><strong>There isn't a GitHub Pages site here.</strong></p>
-
-      <p>
-        If you're trying to publish one,
-        <a href="https://help.github.com/pages/">read the full documentation</a>
-        to learn how to set up <strong>GitHub Pages</strong>
-        for your repository, organization, or user account.
-      </p>
-
-      <div id="suggestions">
-        <a href="https://githubstatus.com">GitHub Status</a> &mdash;
-        <a href="https://twitter.com/githubstatus">@githubstatus</a>
+      <a class="navbar-brand" href="#top">nepal, slowly<span>.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#places">Places</a></li>
+          <li class="nav-item"><a class="nav-link" href="#route">A simple route</a></li>
+          <li class="nav-item"><a class="nav-link" href="#notes">Before you go</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://www.figma.com/design/gs2ErJ1iYkEQzPBTm4TpjK/LA_A16_04_Travel-Diary?node-id=29-5&amp;t=hAhYFpEhojHIghHF-0" target="_blank" rel="noopener noreferrer">Figma design ↗</a></li>
+        </ul>
       </div>
-
-      <a href="/" class="logo logo-img-1x">
-        <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMTZCRDY3REIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMTZCRDY3RUIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdCQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjdDQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SM9MCAAAA+5JREFUeNrEV11Ik1EY3s4+ddOp29Q5b0opCgKFsoKoi5Kg6CIhuwi6zLJLoYLopq4qsKKgi4i6CYIoU/q5iDAKs6syoS76IRWtyJ+p7cdt7sf1PGOD+e0c3dygAx/67ZzzPM95/877GYdHRg3ZjMXFxepQKNS6sLCwJxqNNuFpiMfjVs4ZjUa/pmmjeD6VlJS8NpvNT4QQ7mxwjSsJiEQim/1+/9lgMHgIr5ohuxG1WCw9Vqv1clFR0dCqBODElV6v90ogEDjGdYbVjXhpaendioqK07CIR7ZAqE49PT09BPL2PMgTByQGsYiZlQD4uMXtdr+JxWINhgINYhGT2MsKgMrm2dnZXgRXhaHAg5jEJodUAHxux4LudHJE9RdEdA+i3Juz7bGHe4mhE9FNrgwBCLirMFV9Okh5eflFh8PR5nK5nDabrR2BNJlKO0T35+Li4n4+/J+/JQCxhmu5h3uJoXNHPbmWZAHMshWB8l5/ipqammaAf0zPDDx1ONV3vurdidqwAQL+pEc8sLcAe1CCvQ3YHxIW8Pl85xSWNC1hADDIv0rIE/o4J0k3kww4xSlwIhcq3EFFOm7KN/hUGOQkt0CFa5WpNJlMvxBEz/IVQAxg/ZRZl9wiHA63yDYieM7DnLP5CiAGsC7I5sgtYKJGWe2A8seFqgFJrJjEPY1Cn3pJ8/9W1e5VWsFDTEmFrBcoDhZJEQkXuhICMyKpjhahqN21hRYATKfUOlDmkygrR4o4C0VOLGJKrOITKB4jijzdXygBKixyC5TDQdnk/Pz8qRw6oOWGlsTKGOQW6OH6FBWsyePxdOXLTgxiyebILZCjz+GLgMIKnXNzc49YMlcRdHXcSwxFVgTInQhC9G33UhNoJLuqq6t345p9y3eUy8OTk5PjAHuI9uo4b07FBaOhsu0A4Unc+T1TU1Nj3KsSSE5yJ65jqF2DDd8QqWYmAZrIM2VlZTdnZmb6AbpdV9V6ec9znf5Q7HjYumdRE0JOp3MjitO4SFa+cZz8Umqe3TCbSLvdfkR/kWDdNQl5InuTcysOcpFT35ZrbBxx4p3JAHlZVVW1D/634VRt+FvLBgK/v5LV9WS+10xMTEwtRw7XvqOL+e2Q8V3AYIOIAXQ26/heWVnZCVfcyKHg2CBgTpmPmjYM8l24GyaUHyaIh7XwfR9ErE8qHoDfn2LTNAVC0HX6MFcBIP8Bi+6F6cdW/DICkANRfx99fEYFQ7Nph5i/uQiA214gno7K+guhaiKg9gC62+M8eR7XsBsYJ4ilam60Fb7r7uAj8wFyuwM1oIOWgfmDy6RXEEQzJMPe23DXrVS7rtyD3Df8z/FPgAEAzWU5Ku59ZAUAAAAASUVORK5CYII=">
-      </a>
-
-      <a href="/" class="logo logo-img-2x">
-        <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEQUM1QkUxRUI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEQUM1QkUxRkI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdGQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjgwQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hfPRaQAAB6lJREFUeNrsW2mM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">
-      </a>
     </div>
-  </body>
+  </nav>
+
+  <main id="top">
+    <section class="container hero-wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">A travel note from Nepal</p>
+        <h1>Kathmandu first.<br>The mountains when<br><em>you're ready.</em></h1>
+        <p class="hero-intro">Let the first day stay loose. Wander the old squares, stop for tea when you need a break, and look up: the carved windows are easy to miss if you hurry.</p>
+        <a class="text-link" href="#places">Start exploring <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="hero-photo">
+        <img src="images/kathmandu.png" alt="Temple roofs and the Boudhanath stupa beneath a clear sky in Kathmandu">
+        <figcaption>Kathmandu Valley · photo supplied by you</figcaption>
+      </figure>
+    </section>
+
+    <section class="places-section" id="places">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Three places to begin</p>
+          <h2>Don't try to see it all in a day.</h2>
+        </div>
+        <div class="row g-4">
+          <article class="col-md-4 place-card">
+            <div class="place-number">01 / WALK</div>
+            <h3>Kathmandu Valley</h3>
+            <p>Choose one or two old squares, then follow whichever lane catches your eye. There are plenty of carved windows to miss if you rush.</p>
+          </article>
+          <article class="col-md-4 place-card">
+            <div class="place-number">02 / PAUSE</div>
+            <h3>Boudhanath</h3>
+            <p>Walk a slow loop, then find a rooftop tea stall and watch the light change. Mornings tend to feel quieter.</p>
+          </article>
+          <article class="col-md-4 place-card">
+            <div class="place-number">03 / WANDER</div>
+            <h3>Everest region</h3>
+            <p>The views are huge, but getting there takes time. Build in days to travel and adjust to the altitude instead of squeezing it into a tight schedule.</p>
+          </article>
+        </div>
+        <div class="row g-4 photo-row">
+          <figure class="col-md-6 destination-photo">
+            <img src="images/boudhanath.jpg" alt="Boudhanath stupa with colorful prayer flags and visitors walking around it">
+            <figcaption>Boudhanath · photo supplied by you</figcaption>
+          </figure>
+          <figure class="col-md-6 destination-photo">
+            <img src="images/everest.jpg" alt="Snow-covered Himalayan peaks and yaks at a camp in the Everest region">
+            <figcaption>Everest region · photo supplied by you</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-section" id="route">
+      <div class="container route-inner">
+        <div>
+          <p class="eyebrow">A route with breathing room</p>
+          <h2>Leave space between stops.</h2>
+        </div>
+        <div class="route-list">
+          <div><span>First days</span><p>Stay in the Kathmandu Valley long enough to get your bearings. Pick a neighborhood each day rather than racing between sights.</p></div>
+          <div><span>One morning</span><p>Go to Boudhanath early, take a loop around the stupa, and give yourself time to sit down afterward.</p></div>
+          <div><span>After that</span><p>If you're heading toward Everest, allow real time for the journey, weather, and acclimatization. It's a trip of its own.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="notes-section" id="notes">
+      <div class="container notes-inner">
+        <p class="eyebrow">A few small notes</p>
+        <h2>A few things make the trip easier.</h2>
+        <div class="row g-4 notes-grid">
+          <div class="col-md-4">
+            <h3>At temples</h3>
+            <p>Dress respectfully and check local customs. Ask before taking someone's photograph.</p>
+          </div>
+          <div class="col-md-4">
+            <h3>On the trail</h3>
+            <p>Choose a route that fits your experience, and follow current local advice about weather and altitude.</p>
+          </div>
+          <div class="col-md-4">
+            <h3>Leave a buffer</h3>
+            <p>Travel days can take longer than expected. A spare afternoon is often better than a packed schedule.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <span>Made for curious travelers · Nepal · <a href="https://www.figma.com/design/gs2ErJ1iYkEQzPBTm4TpjK/LA_A16_04_Travel-Diary?node-id=29-5&amp;t=hAhYFpEhojHIghHF-0" target="_blank" rel="noopener noreferrer">View the Figma design ↗</a></span>
+      <span>All three photographs were supplied by you.</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
+```
+
+**`style.css`**
+
+```css
+:root {
+  --paper: #f6f3eb;
+  --ink: #262b27;
+  --muted: #686e66;
+  --red: #a34835;
+  --green: #526d58;
+  --line: #dcd8cd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+}
+
+.site-nav {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 17px 0;
+}
+
+.navbar-brand {
+  color: var(--ink);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.navbar-brand span {
+  color: var(--red);
+}
+
+.navbar-nav {
+  gap: 16px;
+}
+
+.nav-link {
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: .88rem;
+}
+
+.nav-link:hover {
+  color: var(--red);
+}
+
+.hero-wrap {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  align-items: center;
+  gap: 48px;
+  padding-top: 60px;
+  padding-bottom: 76px;
+}
+
+.hero-copy {
+  padding: 14px 0;
+}
+
+.eyebrow,
+.place-number {
+  color: var(--red);
+  font-family: Arial, sans-serif;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  letter-spacing: -.04em;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: clamp(3rem, 5.5vw, 5.4rem);
+  line-height: .99;
+}
+
+h1 em {
+  color: var(--green);
+  font-weight: 400;
+}
+
+.hero-intro {
+  max-width: 390px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--red);
+  font-family: Arial, sans-serif;
+  font-size: .92rem;
+  text-decoration: none;
+}
+
+.text-link span {
+  padding-left: 6px;
+}
+
+figure {
+  margin: 0;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+}
+
+figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: .72rem;
+}
+
+.places-section {
+  padding: 72px 0 76px;
+  background: #eeece3;
+}
+
+.section-heading {
+  max-width: 570px;
+  margin-bottom: 40px;
+}
+
+.section-heading h2,
+.route-inner h2,
+.notes-inner h2 {
+  margin: 11px 0 0;
+  font-size: clamp(2rem, 3.5vw, 3.15rem);
+  line-height: 1.08;
+}
+
+.place-card {
+  padding-top: 4px;
+}
+
+.place-number {
+  color: var(--green);
+  font-size: .67rem;
+}
+
+.place-card h3 {
+  margin: 13px 0 8px;
+  font-size: 1.45rem;
+}
+
+.place-card p,
+.notes-grid p {
+  max-width: 340px;
+  margin: 0;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.65;
+}
+
+.photo-row {
+  margin-top: 30px;
+}
+
+.destination-photo img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.route-section {
+  padding: 76px 0;
+}
+
+.route-inner {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 50px;
+}
+
+.route-list > div {
+  display: grid;
+  grid-template-columns: 105px 1fr;
+  gap: 18px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.route-list > div:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.route-list span {
+  color: var(--green);
+  font-family: Arial, sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.route-list p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.notes-section {
+  padding: 65px 0 72px;
+  background: #e7e8dd;
+}
+
+.notes-inner > h2 {
+  max-width: 570px;
+  margin-bottom: 35px;
+}
+
+.notes-grid h3 {
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+}
+
+.notes-grid p {
+  max-width: 300px;
+}
+
+.site-footer {
+  padding: 22px 0;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: .76rem;
+}
+
+@media (max-width: 767.98px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero-wrap,
+  .route-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .hero-wrap {
+    padding-top: 42px;
+    padding-bottom: 54px;
+  }
+
+  .hero-photo img {
+    height: 320px;
+  }
+
+  .places-section,
+  .route-section {
+    padding: 56px 0;
+  }
+
+  .photo-row {
+    margin-top: 12px;
+  }
+
+  .destination-photo img {
+    height: 250px;
+  }
+
+  .route-list > div {
+    grid-template-columns: 78px 1fr;
+    gap: 12px;
+  }
+}
+```
